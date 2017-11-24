@@ -15,19 +15,52 @@
   <body>
         
         <!-- Title -->
-      <div class="container-fluid">
+    <div class="container-fluid">   <!--container-fluid opening div-->
         <div id="header">Stopwatch</div>
-      </div>
+     
 
-      <!-- Laptime -->
-      <div id="lap">
-        <span id="lap__minute">00</span>:<span id="lap__second">00</span>:<span id="lap__millisecond">00</span>
-      </div>
+        <!-- Laptime -->
+        <div id="lap">
+            <span id="lap__minute">00</span>:<span id="lap__second">00</span>:<span id="lap__millisecond">00</span>
+        </div>
 
-      <!-- Time -->
-      <div id="time">
-        <span id="time__minute">00</span>:<span id="time__second">00</span>:<span id="time__millisecond">00</span>
-      </div>
+        <!-- Time -->
+        <div id="time">
+            <span id="time__minute">00</span>:<span id="time__second">00</span>:<span id="time__millisecond">00</span>
+        </div>
+
+        <!-- Control Buttons -->
+        <div id="controlsContainer" class="row">
+            <div class="col-xs-2 col-xs-offset-4">
+                <div id="start-btn" class="btn-control">
+                    <button class="btn btn-med btn-warning">START</button>
+                </div>
+                <div id="stop-btn" class="btn-control">
+                    <button class="btn btn-med btn-warning">STOP</button>
+                </div>
+                <div id="resume-btn" class="btn-control">
+                    <button class="btn btn-med btn-warning">RESUME</button>   
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div id="lap-btn" class="btn-control">
+                    <button class="btn btn-med btn-warning">LAP</button>
+                </div>
+                <div id="reset-btn" class="btn-control">
+                    <button class="btn btn-med btn-warning">RESET</button>    
+                </div>
+            </div>
+        </div>
+
+        <!-- Laps box -->
+        <div id="laps">
+            
+        </div>
+
+    </div>   <!--container-fluid closing div-->
+
+      
+
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
