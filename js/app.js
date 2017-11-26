@@ -12,7 +12,7 @@ $(function() {
     //variable for setInterval
     var action;
     //Number of laps
-    var lapNum = 0;
+    var lapNumber = 0;
     //minutes, seconds, milliseconds for time
     var timeMinutes, timeSeconds, timeCentiSeconds, lapMinutes, lapSeconds, lapCentiSeconds;
 
@@ -90,6 +90,25 @@ $(function() {
         }
     }
 
+    //Create a function to add the lap details to the UI in the lap box:
+    function addLap() {
+        lapNumber++;
+        var myLaps = 
+            "<div>" + 
+                "<div>" + 
+                    "Lap" + lapNumber + 
+                "</div>" +
+                "<div>" +
+                    "<span>" + format(lapMinutes) + "</span" + 
+                    "<span>:" + format(lapSeconds) + "</span" +
+                    "<span>:" + format(lapCentiSeconds) + "</span" +
+                "</div>" +
+            "</div>";
+
+        $(myLaps).appendTo("#laps");
+
+    }
+
 
     //When the app is loaded only show the start and lap buttons
     hideShowBtns("#start-btn", "#lap-btn");
@@ -114,8 +133,6 @@ $(function() {
         });
         
 
-
-
     //When the resume button is clicked on:
         $("#resume-btn").on("click", function() {
             //show the stop and lap buttons
@@ -124,9 +141,6 @@ $(function() {
             startCounter();
         })
         
-        
-
-
 
     //When the reset button is clicked on:
         $("#reset-btn").on("click", function() {
@@ -135,15 +149,18 @@ $(function() {
         })
         
 
-
     //When the lap button is clicked on:
+        $("#lap-btn").on("click", function() {
         //if mode is ON:
+        if(mode) {
             //stop the action
+            clearInterval(action);
             //resetlap and print lap details
+            lapCounter = 0;
+            addLap();
             //start action
-
-
-
-    
+            startCounter();
+        }        
+    });   
 
 });
