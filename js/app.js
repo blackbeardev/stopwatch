@@ -32,9 +32,16 @@ $(function() {
         action = setInterval(function() {
             //Increase timeCounter by 1:
             timeCounter++;
+            if(timeCounter == 100*60*100) {
+                //Reset the counter to 0
+                timeCounter = 0;
+            }
 
             //Increase the lapCounter by 1:
             lapCounter++;
+            if(lapCounter == 100*60*100) {
+                lapCounter = 0;
+            }
 
             //Update time in UI:
             updateTime();
@@ -98,24 +105,35 @@ $(function() {
         });
         
 
-
-
-
-
     //When the stop button is clicked on:
-        //Show the resume and reset buttons
-        //stop the counter
+        $("#stop-btn").on("click", function() {
+            //Show the resume and reset buttons
+            hideShowBtns("#resume-btn", "#reset-btn");
+            //stop the counter
+            clearInterval(action);
+        });
+        
 
 
 
     //When the resume button is clicked on:
-        //show the stop and lap buttons
-        //start action
+        $("#resume-btn").on("click", function() {
+            //show the stop and lap buttons
+            hideShowBtns("#stop-btn", "#lap-btn");
+            //start action
+            startCounter();
+        })
+        
+        
 
 
 
     //When the reset button is clicked on:
-        //reload the page
+        $("#reset-btn").on("click", function() {
+            //reload the page
+            location.reload();
+        })
+        
 
 
     //When the lap button is clicked on:
