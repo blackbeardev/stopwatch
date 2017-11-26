@@ -42,7 +42,7 @@ $(function() {
     }
 
     //updateTime function - converts timeCounter and lapCounter to min, sec and centiseconds:
-    function updateTime = function() {
+    function updateTime () {
         //Calculate the timeCounter:
         //There are 60 seconds in 1 minute and 100 centiseconds in one second - 1minute = 60sec * 100centisec = 6000 centiseconds.
         //To get the number of minutes we need to divide the number of centiseconds by 6000:
@@ -51,17 +51,25 @@ $(function() {
         //1sec = 100centiseconds:
         timeSeconds = Math.floor((timeCounter % 6000) / 100);
 
-        timeCentiSeconds = Math.floor((timeSeconds % 6000) / 100);
+        timeCentiSeconds = (timeCounter%6000)%100;
+
+        //Update the UI for the time counter:
+        $("#time__minute").text(timeMinutes);
+        $("#time__second").text(timeSeconds);
+        $("#time__centiSecond").text(timeCentiSeconds);
 
         //Calculate the lapCounter:
 
         lapMinutes = Math.floor(lapCounter / 6000);
-        
-                //1sec = 100centiseconds:
+
         lapSeconds = Math.floor((lapCounter % 6000) / 100);
         
-        lapCentiSeconds = Math.floor((lapSeconds % 6000) / 100);
+        lapCentiSeconds = (lapCounter%6000)%100;
 
+        //Update the UI for the lap counter:
+        $("#lap__minute").text(lapMinutes);
+        $("#lap__second").text(lapSeconds);
+        $("#lap__centiSecond").text(lapCentiSeconds);
     }
 
 
