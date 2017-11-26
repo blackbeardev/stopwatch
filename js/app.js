@@ -14,7 +14,7 @@ $(function() {
     //Number of laps
     var lapNum = 0;
     //minutes, seconds, milliseconds for time
-    var timeMinutes, timeSeconds, timeMilliseconds, lapMinutes, lapSeconds, lapMilliseconds;
+    var timeMinutes, timeSeconds, timeCentiSeconds, lapMinutes, lapSeconds, lapCentiSeconds;
 
     //FUNCTIONS
 
@@ -28,7 +28,40 @@ $(function() {
 
     //Function for starting the counter:
     function startCounter() {
+        //Every 10 milliseconds we're going to increase the timeCounter and lapCounter by 1:
+        action = setInterval(function() {
+            //Increase timeCounter by 1:
+            timeCounter++;
+
+            //Increase the lapCounter by 1:
+            lapCounter++;
+
+            //Update time in UI:
+            updateTime();
+        }, 10);  
+    }
+
+    //updateTime function - converts timeCounter and lapCounter to min, sec and centiseconds:
+    function updateTime = function() {
+        //Calculate the timeCounter:
+        //There are 60 seconds in 1 minute and 100 centiseconds in one second - 1minute = 60sec * 100centisec = 6000 centiseconds.
+        //To get the number of minutes we need to divide the number of centiseconds by 6000:
+        timeMinutes = Math.floor(timeCounter / 6000);
+
+        //1sec = 100centiseconds:
+        timeSeconds = Math.floor((timeCounter % 6000) / 100);
+
+        timeCentiSeconds = Math.floor((timeSeconds % 6000) / 100);
+
+        //Calculate the lapCounter:
+
+        lapMinutes = Math.floor(lapCounter / 6000);
         
+                //1sec = 100centiseconds:
+        lapSeconds = Math.floor((lapCounter % 6000) / 100);
+        
+        lapCentiSeconds = Math.floor((lapSeconds % 6000) / 100);
+
     }
 
 
